@@ -206,7 +206,7 @@ export function AcademyApp() {
         )}
 
         <footer className="academy-footer">
-          <p>OneDash Academy là môi trường đào tạo mô phỏng. Nội dung được biên soạn từ <a href={courseSource.href} target="_blank" rel="noreferrer">onedash.vn</a> và đối chiếu với {courseSource.interfaceReference}, rà soát ngày {courseSource.reviewedAt}. Không có kết nối server thật.</p>
+          <p>OneDash Academy là môi trường đào tạo mô phỏng. Nội dung được biên soạn từ <a href={courseSource.href} target="_blank" rel="noreferrer">onedash.vn</a>, rà soát ngày {courseSource.reviewedAt}. Không có kết nối server thật.</p>
         </footer>
       </main>
 

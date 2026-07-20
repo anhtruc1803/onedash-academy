@@ -25,10 +25,9 @@ node --test tests/rendered-html.test.mjs
 ## Cấu trúc chính
 
 - `app/data/course.ts`: nội dung chương, bài, câu hỏi và đáp án.
-- `app/components/ProductMap.tsx`: bản đồ các khu vực giao diện thực tế gắn với từng chương.
 - `app/components/`: giao diện khóa học, quiz, dashboard và phòng lab.
 - `app/lib/progress-storage.ts`: lớp lưu trữ tiến độ có thể thay thế bằng adapter database sau này.
 - `tokens.css` và `app/globals.css`: design tokens cùng hệ thống giao diện Hallmark.
 - `public/og.png`: ảnh chia sẻ của OneDash Academy.
 
-Nội dung tính năng được biên soạn từ nguồn công khai tại [onedash.vn](https://onedash.vn/), đồng thời đối chiếu với sáu ảnh giao diện sản phẩm thực tế do đội ngũ cung cấp. Mọi tên máy và dữ liệu trong Academy vẫn là dữ liệu giả lập an toàn.
+Nội dung tính năng được biên soạn từ nguồn công khai tại [onedash.vn](https://onedash.vn/). Mọi tên máy và dữ liệu trong Academy đều là dữ liệu giả lập an toàn.

@@ -7,17 +7,6 @@ export const chapters: Chapter[] = [
     shortTitle: "Khám phá OneDash",
     title: "Tổng quan về OneDash",
     description: "Hiểu vai trò của một bảng điều khiển tập trung trước khi chạm vào máy chủ.",
-    productGuide: {
-      screen: "Dashboard Tổng quan",
-      entryPath: "Tổng quan → Tổng quan / Hiệu năng / Bảo mật",
-      landmarks: [
-        "Bộ tìm kiếm và lọc nhóm thu hẹp danh sách máy chủ.",
-        "Mỗi dòng ghép trạng thái Agent với CPU, RAM, Disk và tín hiệu giám sát.",
-        "Nhãn Trực tuyến và Đang chờ cài mô tả trạng thái quản lý khác nhau.",
-        "Nhật ký truy cập nằm dưới bảng tổng quan để bổ sung ngữ cảnh vận hành.",
-      ],
-      operatorMove: "lọc đúng nhóm, đọc trạng thái Agent và cảnh báo trước khi mở công cụ có tác động.",
-    },
     objectives: [
       "Mô tả đúng OneDash và vấn đề nền tảng giải quyết.",
       "Nhận diện nhóm người dùng và bốn khu vực vận hành chính.",
@@ -107,7 +96,7 @@ export const chapters: Chapter[] = [
         id: "q1-5",
         prompt: "Trong dashboard thực tế, trạng thái Đang chờ cài cho biết điều gì?",
         options: [
-          { label: "Máy đã được khai báo nhưng chưa hoàn tất cài đặt kết nối quản lý", rationale: "Đúng. Ảnh giao diện cho thấy trạng thái này chưa có số liệu CPU, RAM và Disk." },
+          { label: "Máy đã được khai báo nhưng chưa hoàn tất cài đặt kết nối quản lý", rationale: "Đúng. Ở trạng thái này, máy chưa có số liệu CPU, RAM và Disk để theo dõi." },
           { label: "Máy chắc chắn đã bị tấn công", rationale: "Sai. Đây là trạng thái triển khai, không phải kết luận bảo mật." },
           { label: "Mọi tài nguyên đều bằng 0%", rationale: "Sai. Giao diện hiển thị N/A vì chưa có dữ liệu, không phải giá trị 0%." },
         ],
@@ -126,17 +115,6 @@ export const chapters: Chapter[] = [
     shortTitle: "Kết nối máy chủ",
     title: "Kết nối và quản lý máy chủ",
     description: "Chuẩn bị đúng dữ liệu, thêm máy an toàn và đọc trạng thái kết nối.",
-    productGuide: {
-      screen: "Danh sách Máy chủ",
-      entryPath: "Kết nối → Máy chủ → Của tôi / Được chia sẻ",
-      landmarks: [
-        "Tìm kiếm toàn cục và bộ lọc nhóm hỗ trợ chọn đúng phạm vi.",
-        "Nút Máy chủ mới mở luồng thêm máy; Academy chỉ mô phỏng metadata an toàn.",
-        "Thẻ máy hiển thị Disk và phương thức mở Agent Terminal hoặc SSH Terminal.",
-        "Máy Đang chờ cài chưa có số liệu tài nguyên và cần hoàn tất bước kết nối.",
-      ],
-      operatorMove: "xác nhận máy thuộc Của tôi hay Được chia sẻ, sau đó kiểm tra trạng thái trước khi mở terminal.",
-    },
     objectives: [
       "Nêu các điều kiện cần chuẩn bị trước khi thêm server.",
       "Mô tả quy trình kết nối Linux và Windows ở mức tổng quan.",
@@ -227,7 +205,7 @@ export const chapters: Chapter[] = [
         prompt: "Thẻ máy chủ thực tế có thể đưa ra hai lối mở terminal nào?",
         options: [
           { label: "Agent Terminal và SSH Terminal", rationale: "Đúng. Hai nhãn này xuất hiện trên các thẻ máy tùy trạng thái kết nối." },
-          { label: "Email Terminal và FTP Terminal", rationale: "Sai. Hai lựa chọn này không xuất hiện trong ảnh giao diện được cung cấp." },
+          { label: "Email Terminal và FTP Terminal", rationale: "Sai. Đây không phải hai phương thức mở terminal trong luồng quản lý máy chủ đang học." },
           { label: "Chỉ Remote Desktop", rationale: "Sai. Remote Desktop là một khu vực khác; thẻ máy Linux trong ảnh hiển thị Agent hoặc SSH Terminal." },
         ],
         correctIndex: 0,
@@ -245,17 +223,6 @@ export const chapters: Chapter[] = [
     shortTitle: "Giám sát sức khỏe",
     title: "Giám sát và sức khỏe hệ thống",
     description: "Đọc CPU, RAM, Disk, uptime và ưu tiên cảnh báo theo mức ảnh hưởng.",
-    productGuide: {
-      screen: "Chi tiết máy chủ và Giám sát",
-      entryPath: "Máy chủ → chọn máy → Tổng quan / Giám sát",
-      landmarks: [
-        "Tổng quan máy cho biết hệ điều hành, CPU, RAM, nhà cung cấp và từng mount Disk.",
-        "Khung thời gian gồm Live 30s, 1 giờ, 1 ngày, 7 ngày, 30 ngày và tùy chỉnh Raw.",
-        "Giám sát có thể đổi giữa Biểu đồ và Bảng.",
-        "Ngoài CPU, Memory và Disk Usage còn có Network Traffic/s và Disk I/O/s.",
-      ],
-      operatorMove: "chọn cửa sổ thời gian phù hợp, đọc xu hướng đa chỉ số rồi mới đánh giá mức độ sự cố.",
-    },
     objectives: [
       "Giải thích ý nghĩa của CPU, RAM, Disk và uptime.",
       "Kết hợp chỉ số tài nguyên với trạng thái dịch vụ.",
@@ -364,17 +331,6 @@ export const chapters: Chapter[] = [
     shortTitle: "Bảo mật & người dùng",
     title: "Bảo mật và quản lý người dùng",
     description: "Áp dụng quyền tối thiểu, bảo vệ thông tin xác thực và đọc dấu vết audit.",
-    productGuide: {
-      screen: "Bảo mật và nhật ký",
-      entryPath: "Máy chủ → Quản lý SSH / Firewall / Nhật ký máy chủ / Nhật ký Terminal",
-      landmarks: [
-        "SSH Watch trên dashboard cho biết số lần thất bại hoặc trạng thái tắt.",
-        "Nhật ký Terminal phân loại phiên Agent và SSH, kèm trạng thái, thời lượng và kích thước dữ liệu.",
-        "Sự kiện máy chủ và Nhật ký máy chủ cung cấp dấu vết bổ sung cho điều tra.",
-        "Quy tắc cảnh báo là điểm cấu hình giám sát, không thay thế phân quyền người dùng.",
-      ],
-      operatorMove: "đối chiếu cảnh báo với nhật ký phiên và sự kiện, bảo toàn bằng chứng trước khi chặn hoặc thay đổi quyền.",
-    },
     objectives: [
       "Áp dụng nguyên tắc phân quyền tối thiểu.",
       "Phân biệt vai trò quan sát và vai trò thao tác.",
@@ -464,7 +420,7 @@ export const chapters: Chapter[] = [
         id: "q4-5",
         prompt: "Nhật ký Terminal thực tế giúp phân biệt điều gì?",
         options: [
-          { label: "Phiên Agent và SSH cùng trạng thái, thời lượng và kích thước dữ liệu", rationale: "Đúng. Đây là các trường quan sát được trong ảnh giao diện Nhật ký Terminal." },
+          { label: "Phiên Agent và SSH cùng trạng thái, thời lượng và kích thước dữ liệu", rationale: "Đúng. Các trường này giúp nhận diện loại phiên, kết quả và quy mô hoạt động cần rà soát." },
           { label: "Mật khẩu đã dùng trong phiên", rationale: "Sai. Không nên hiển thị hoặc lưu mật khẩu trong nhật ký đào tạo." },
           { label: "Chỉ phần trăm CPU", rationale: "Sai. CPU thuộc khu vực Giám sát, không phải trọng tâm danh sách phiên terminal." },
         ],
@@ -483,17 +439,6 @@ export const chapters: Chapter[] = [
     shortTitle: "Vận hành & tự động hóa",
     title: "Vận hành và tự động hóa",
     description: "Dùng Command Templates có kiểm soát, theo dõi kết quả và xử lý tác vụ thất bại.",
-    productGuide: {
-      screen: "Công cụ vận hành máy chủ",
-      entryPath: "Máy chủ → Terminal / Quản lý File / Projects",
-      landmarks: [
-        "Quản lý File có cây thư mục, tìm kiếm, tải lên và tạo mới trên máy đã chọn.",
-        "Thông tin máy chủ cung cấp lệnh hỗ trợ kiểm tra trạng thái Agent và xem log real-time.",
-        "Projects và Ứng dụng nằm trong nhóm Tự động hóa trên thanh điều hướng.",
-        "Nhật ký Terminal giúp rà lại phiên thao tác sau công việc vận hành.",
-      ],
-      operatorMove: "kiểm tra service và log, giới hạn phạm vi tác vụ, rồi xác minh kết quả theo từng host.",
-    },
     objectives: [
       "Lập nhịp vận hành định kỳ.",
       "Mô tả lợi ích và rủi ro của Command Templates.",
@@ -602,5 +547,4 @@ export const courseSource = {
   label: "Nguồn sản phẩm công khai: onedash.vn",
   href: "https://onedash.vn/",
   reviewedAt: "20/07/2026",
-  interfaceReference: "6 ảnh giao diện thực tế do đội ngũ cung cấp",
 };
