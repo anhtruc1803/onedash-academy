@@ -23,8 +23,10 @@ const baseServers: DashboardServer[] = [
 
 function ResourceMeter({ value, label }: { value: number; label: string }) {
   return (
-    <span className="meter" aria-label={`${label} ${value}%`}>
-      <span className="meter__fill" style={{ transform: `scaleX(${value / 100})` }} />
+    <span className="meter" data-tone={value >= 85 ? "warning" : undefined} aria-label={`${label} ${value}%`}>
+      <span className="meter__segments" aria-hidden="true">
+        {Array.from({ length: 8 }, (_, index) => <i key={index} data-filled={value >= (index + 1) * 12.5 || undefined} />)}
+      </span>
       <span className="meter__value">{value}%</span>
     </span>
   );
@@ -49,6 +51,7 @@ export function ServerDashboard({ addedServers = [] }: { addedServers?: string[]
     })),
   ];
   const visibleServers = servers.filter((server) => server.name.toLowerCase().includes(query.trim().toLowerCase()));
+  const onlineServers = visibleServers.filter((server) => server.status === "Online").length;
 
   return (
     <section className="server-dashboard" aria-label="Dashboard máy chủ giả lập">
@@ -67,10 +70,10 @@ export function ServerDashboard({ addedServers = [] }: { addedServers?: string[]
       </div>
       <p className="dashboard-view-note" aria-live="polite">{activeView === "Tổng quan" ? "Ghép trạng thái Agent, tài nguyên và giám sát trong một lượt đọc." : activeView === "Hiệu năng" ? "Đối chiếu CPU, RAM và Disk; mở chương Giám sát để đọc xu hướng theo thời gian." : "Ưu tiên SSH Watch và cảnh báo trước khi mở công cụ có tác động."}</p>
       <dl className="dashboard-summary">
-        <div><dt>Tổng server</dt><dd>{visibleServers.length}</dd></div>
-        <div><dt>Online</dt><dd>{visibleServers.filter((server) => server.status === "Online").length}</dd></div>
-        <div><dt>Cảnh báo</dt><dd>{visibleServers.filter((server) => server.status !== "Online").length}</dd></div>
-        <div><dt>Hệ điều hành</dt><dd>2</dd></div>
+        <div><span aria-hidden="true">01</span><dt>Máy chủ</dt><dd>{visibleServers.length}</dd><small>Đang hiển thị</small></div>
+        <div><span aria-hidden="true">02</span><dt>Sức khỏe</dt><dd>{onlineServers}/{visibleServers.length}</dd><small>Trực tuyến</small></div>
+        <div><span aria-hidden="true">03</span><dt>Dịch vụ</dt><dd>Theo máy</dd><small>Mở chi tiết để kiểm tra</small></div>
+        <div><span aria-hidden="true">04</span><dt>Tài nguyên</dt><dd>3 nhóm</dd><small>CPU · RAM · Disk</small></div>
       </dl>
       <div className="server-table" role="table" aria-label="Tài nguyên máy chủ">
         <div className="server-table__row server-table__header" role="row">

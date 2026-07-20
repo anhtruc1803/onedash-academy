@@ -211,13 +211,20 @@ export function AcademyApp() {
       </main>
 
       <aside className="learning-dock" aria-label="Điều hướng nhanh">
-        <span>Tiến độ {totalProgress}%</span>
-        <div><i style={{ transform: `scaleX(${totalProgress / 100})` }} /></div>
+        <span className="learning-dock__score"><small>Nhiệm vụ</small><strong>{progress.practiceCompletedChapters.length}/5</strong></span>
+        <div className="learning-dock__track" role="progressbar" aria-label={`Tổng tiến độ ${totalProgress}%`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={totalProgress}>
+          <i style={{ transform: `scaleX(${totalProgress / 100})` }} />
+          <span className="learning-dock__nodes" aria-hidden="true">
+            {chapters.map((chapter) => (
+              <b key={chapter.id} data-complete={progress.completedChapters.includes(chapter.id) || undefined} data-current={progress.activeChapterId === chapter.id || undefined} />
+            ))}
+          </span>
+        </div>
         <button type="button" onClick={() => {
           if (!theoryComplete) setStage("theory");
           else if (!quizPassed) setStage("quiz");
           else setStage("practice");
-        }}>Tiếp tục phần mở khóa →</button>
+        }}>Tiếp tục →</button>
       </aside>
 
       <ProgressTools
