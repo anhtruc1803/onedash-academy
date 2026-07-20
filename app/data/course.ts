@@ -7,6 +7,17 @@ export const chapters: Chapter[] = [
     shortTitle: "Khám phá OneDash",
     title: "Tổng quan về OneDash",
     description: "Hiểu vai trò của một bảng điều khiển tập trung trước khi chạm vào máy chủ.",
+    productGuide: {
+      screen: "Dashboard Tổng quan",
+      entryPath: "Tổng quan → Tổng quan / Hiệu năng / Bảo mật",
+      landmarks: [
+        "Bộ tìm kiếm và lọc nhóm thu hẹp danh sách máy chủ.",
+        "Mỗi dòng ghép trạng thái Agent với CPU, RAM, Disk và tín hiệu giám sát.",
+        "Nhãn Trực tuyến và Đang chờ cài mô tả trạng thái quản lý khác nhau.",
+        "Nhật ký truy cập nằm dưới bảng tổng quan để bổ sung ngữ cảnh vận hành.",
+      ],
+      operatorMove: "lọc đúng nhóm, đọc trạng thái Agent và cảnh báo trước khi mở công cụ có tác động.",
+    },
     objectives: [
       "Mô tả đúng OneDash và vấn đề nền tảng giải quyết.",
       "Nhận diện nhóm người dùng và bốn khu vực vận hành chính.",
@@ -92,10 +103,20 @@ export const chapters: Chapter[] = [
         ],
         correctIndex: 0,
       },
+      {
+        id: "q1-5",
+        prompt: "Trong dashboard thực tế, trạng thái Đang chờ cài cho biết điều gì?",
+        options: [
+          { label: "Máy đã được khai báo nhưng chưa hoàn tất cài đặt kết nối quản lý", rationale: "Đúng. Ảnh giao diện cho thấy trạng thái này chưa có số liệu CPU, RAM và Disk." },
+          { label: "Máy chắc chắn đã bị tấn công", rationale: "Sai. Đây là trạng thái triển khai, không phải kết luận bảo mật." },
+          { label: "Mọi tài nguyên đều bằng 0%", rationale: "Sai. Giao diện hiển thị N/A vì chưa có dữ liệu, không phải giá trị 0%." },
+        ],
+        correctIndex: 0,
+      },
     ],
     practice: {
       title: "Nhiệm vụ 01 · Đọc bàn điều khiển",
-      brief: "Mở đủ bốn khu vực Máy chủ, Sức khỏe, Dịch vụ và Tài nguyên để hoàn thành bản đồ giao diện.",
+      brief: "Mở đủ bốn khu vực Tổng quan, Hiệu năng, Bảo mật và Nhật ký truy cập để hoàn thành bản đồ giao diện.",
       success: "Bạn đã biết bắt đầu từ đâu trước khi thao tác sâu hơn.",
     },
   },
@@ -105,6 +126,17 @@ export const chapters: Chapter[] = [
     shortTitle: "Kết nối máy chủ",
     title: "Kết nối và quản lý máy chủ",
     description: "Chuẩn bị đúng dữ liệu, thêm máy an toàn và đọc trạng thái kết nối.",
+    productGuide: {
+      screen: "Danh sách Máy chủ",
+      entryPath: "Kết nối → Máy chủ → Của tôi / Được chia sẻ",
+      landmarks: [
+        "Tìm kiếm toàn cục và bộ lọc nhóm hỗ trợ chọn đúng phạm vi.",
+        "Nút Máy chủ mới mở luồng thêm máy; Academy chỉ mô phỏng metadata an toàn.",
+        "Thẻ máy hiển thị Disk và phương thức mở Agent Terminal hoặc SSH Terminal.",
+        "Máy Đang chờ cài chưa có số liệu tài nguyên và cần hoàn tất bước kết nối.",
+      ],
+      operatorMove: "xác nhận máy thuộc Của tôi hay Được chia sẻ, sau đó kiểm tra trạng thái trước khi mở terminal.",
+    },
     objectives: [
       "Nêu các điều kiện cần chuẩn bị trước khi thêm server.",
       "Mô tả quy trình kết nối Linux và Windows ở mức tổng quan.",
@@ -190,10 +222,20 @@ export const chapters: Chapter[] = [
         ],
         correctIndex: 0,
       },
+      {
+        id: "q2-5",
+        prompt: "Thẻ máy chủ thực tế có thể đưa ra hai lối mở terminal nào?",
+        options: [
+          { label: "Agent Terminal và SSH Terminal", rationale: "Đúng. Hai nhãn này xuất hiện trên các thẻ máy tùy trạng thái kết nối." },
+          { label: "Email Terminal và FTP Terminal", rationale: "Sai. Hai lựa chọn này không xuất hiện trong ảnh giao diện được cung cấp." },
+          { label: "Chỉ Remote Desktop", rationale: "Sai. Remote Desktop là một khu vực khác; thẻ máy Linux trong ảnh hiển thị Agent hoặc SSH Terminal." },
+        ],
+        correctIndex: 0,
+      },
     ],
     practice: {
       title: "Nhiệm vụ 02 · Thêm server giả lập",
-      brief: "Chọn tên máy, hệ điều hành và môi trường; không có trường credential hoặc kết nối thật.",
+      brief: "Chọn tên máy, hệ điều hành, môi trường và lối kết nối mô phỏng; không có trường credential hoặc kết nối thật.",
       success: "Server giả lập đã xuất hiện trên dashboard với metadata rõ ràng.",
     },
   },
@@ -203,6 +245,17 @@ export const chapters: Chapter[] = [
     shortTitle: "Giám sát sức khỏe",
     title: "Giám sát và sức khỏe hệ thống",
     description: "Đọc CPU, RAM, Disk, uptime và ưu tiên cảnh báo theo mức ảnh hưởng.",
+    productGuide: {
+      screen: "Chi tiết máy chủ và Giám sát",
+      entryPath: "Máy chủ → chọn máy → Tổng quan / Giám sát",
+      landmarks: [
+        "Tổng quan máy cho biết hệ điều hành, CPU, RAM, nhà cung cấp và từng mount Disk.",
+        "Khung thời gian gồm Live 30s, 1 giờ, 1 ngày, 7 ngày, 30 ngày và tùy chỉnh Raw.",
+        "Giám sát có thể đổi giữa Biểu đồ và Bảng.",
+        "Ngoài CPU, Memory và Disk Usage còn có Network Traffic/s và Disk I/O/s.",
+      ],
+      operatorMove: "chọn cửa sổ thời gian phù hợp, đọc xu hướng đa chỉ số rồi mới đánh giá mức độ sự cố.",
+    },
     objectives: [
       "Giải thích ý nghĩa của CPU, RAM, Disk và uptime.",
       "Kết hợp chỉ số tài nguyên với trạng thái dịch vụ.",
@@ -288,10 +341,20 @@ export const chapters: Chapter[] = [
         ],
         correctIndex: 0,
       },
+      {
+        id: "q3-5",
+        prompt: "Khi cần biết một spike chỉ xảy ra tức thời hay kéo dài, nên dùng gì?",
+        options: [
+          { label: "Đổi cửa sổ Live 30s sang 1 giờ hoặc dài hơn để so sánh xu hướng", rationale: "Đúng. Giao diện Giám sát cung cấp nhiều cửa sổ thời gian để đặt chỉ số vào ngữ cảnh." },
+          { label: "Chỉ đọc một số phần trăm hiện tại", rationale: "Sai. Một mẫu tức thời không đủ phân biệt spike và xu hướng." },
+          { label: "Xóa dữ liệu cũ rồi xem lại", rationale: "Sai. Lịch sử là ngữ cảnh cần thiết cho chẩn đoán." },
+        ],
+        correctIndex: 0,
+      },
     ],
     practice: {
       title: "Nhiệm vụ 03 · Ưu tiên cảnh báo",
-      brief: "Chọn cảnh báo cần xử lý trước và thực hiện hành động giảm rủi ro trong mô phỏng.",
+      brief: "Đổi cửa sổ quan sát, đọc xu hướng CPU/RAM/Disk và chọn cảnh báo cần xử lý trước trong mô phỏng.",
       success: "Cảnh báo bảo mật đã được xử lý trước các tín hiệu ít khẩn cấp hơn.",
     },
   },
@@ -301,6 +364,17 @@ export const chapters: Chapter[] = [
     shortTitle: "Bảo mật & người dùng",
     title: "Bảo mật và quản lý người dùng",
     description: "Áp dụng quyền tối thiểu, bảo vệ thông tin xác thực và đọc dấu vết audit.",
+    productGuide: {
+      screen: "Bảo mật và nhật ký",
+      entryPath: "Máy chủ → Quản lý SSH / Firewall / Nhật ký máy chủ / Nhật ký Terminal",
+      landmarks: [
+        "SSH Watch trên dashboard cho biết số lần thất bại hoặc trạng thái tắt.",
+        "Nhật ký Terminal phân loại phiên Agent và SSH, kèm trạng thái, thời lượng và kích thước dữ liệu.",
+        "Sự kiện máy chủ và Nhật ký máy chủ cung cấp dấu vết bổ sung cho điều tra.",
+        "Quy tắc cảnh báo là điểm cấu hình giám sát, không thay thế phân quyền người dùng.",
+      ],
+      operatorMove: "đối chiếu cảnh báo với nhật ký phiên và sự kiện, bảo toàn bằng chứng trước khi chặn hoặc thay đổi quyền.",
+    },
     objectives: [
       "Áp dụng nguyên tắc phân quyền tối thiểu.",
       "Phân biệt vai trò quan sát và vai trò thao tác.",
@@ -386,10 +460,20 @@ export const chapters: Chapter[] = [
         ],
         correctIndex: 0,
       },
+      {
+        id: "q4-5",
+        prompt: "Nhật ký Terminal thực tế giúp phân biệt điều gì?",
+        options: [
+          { label: "Phiên Agent và SSH cùng trạng thái, thời lượng và kích thước dữ liệu", rationale: "Đúng. Đây là các trường quan sát được trong ảnh giao diện Nhật ký Terminal." },
+          { label: "Mật khẩu đã dùng trong phiên", rationale: "Sai. Không nên hiển thị hoặc lưu mật khẩu trong nhật ký đào tạo." },
+          { label: "Chỉ phần trăm CPU", rationale: "Sai. CPU thuộc khu vực Giám sát, không phải trọng tâm danh sách phiên terminal." },
+        ],
+        correctIndex: 0,
+      },
     ],
     practice: {
       title: "Nhiệm vụ 04 · Checklist quyền tối thiểu",
-      brief: "Chọn ba biện pháp đúng và loại bỏ phương án dùng chung tài khoản root.",
+      brief: "Chọn baseline quyền tối thiểu, bật khả năng truy vết phiên và loại bỏ phương án dùng chung tài khoản root.",
       success: "Bạn đã tạo một baseline bảo mật có thể kiểm tra lại.",
     },
   },
@@ -399,6 +483,17 @@ export const chapters: Chapter[] = [
     shortTitle: "Vận hành & tự động hóa",
     title: "Vận hành và tự động hóa",
     description: "Dùng Command Templates có kiểm soát, theo dõi kết quả và xử lý tác vụ thất bại.",
+    productGuide: {
+      screen: "Công cụ vận hành máy chủ",
+      entryPath: "Máy chủ → Terminal / Quản lý File / Projects",
+      landmarks: [
+        "Quản lý File có cây thư mục, tìm kiếm, tải lên và tạo mới trên máy đã chọn.",
+        "Thông tin máy chủ cung cấp lệnh hỗ trợ kiểm tra trạng thái Agent và xem log real-time.",
+        "Projects và Ứng dụng nằm trong nhóm Tự động hóa trên thanh điều hướng.",
+        "Nhật ký Terminal giúp rà lại phiên thao tác sau công việc vận hành.",
+      ],
+      operatorMove: "kiểm tra service và log, giới hạn phạm vi tác vụ, rồi xác minh kết quả theo từng host.",
+    },
     objectives: [
       "Lập nhịp vận hành định kỳ.",
       "Mô tả lợi ích và rủi ro của Command Templates.",
@@ -484,10 +579,20 @@ export const chapters: Chapter[] = [
         ],
         correctIndex: 0,
       },
+      {
+        id: "q5-5",
+        prompt: "Trước khi chạy lại một tác vụ lỗi, màn hình thực tế gợi ý kiểm tra nhanh bằng gì?",
+        options: [
+          { label: "Kiểm tra trạng thái service/Agent và xem log real-time", rationale: "Đúng. Màn hình Thông tin máy chủ cung cấp hai lối kiểm tra này trước khi tiếp tục." },
+          { label: "Tải ngẫu nhiên một tệp lên thư mục gốc", rationale: "Sai. Hành động này không chẩn đoán lỗi và còn tạo thay đổi ngoài phạm vi." },
+          { label: "Xóa Nhật ký Terminal", rationale: "Sai. Nhật ký cần được giữ để truy vết và chẩn đoán." },
+        ],
+        correctIndex: 0,
+      },
     ],
     practice: {
       title: "Nhiệm vụ 05 · Khôi phục tác vụ lỗi",
-      brief: "Chạy template mô phỏng, đọc log host lỗi và chỉ chạy lại sau khi kiểm tra trạng thái.",
+      brief: "Chạy template mô phỏng, kiểm tra trạng thái service, đọc log host lỗi và chỉ chạy lại đúng host sau khi đủ bằng chứng.",
       success: "Bạn đã xử lý lỗi theo host thay vì chạy lại mù quáng.",
     },
   },
@@ -497,5 +602,5 @@ export const courseSource = {
   label: "Nguồn sản phẩm công khai: onedash.vn",
   href: "https://onedash.vn/",
   reviewedAt: "20/07/2026",
+  interfaceReference: "6 ảnh giao diện thực tế do đội ngũ cung cấp",
 };
-

@@ -1,4 +1,5 @@
 import type { Chapter } from "../types/course";
+import { ProductMap } from "./ProductMap";
 
 type LessonPanelProps = {
   chapter: Chapter;
@@ -43,6 +44,7 @@ export function LessonPanel({
         </div>
         <h2 id="lesson-title">{lesson.title}</h2>
         <p className="lesson-sheet__summary">{lesson.summary}</p>
+        <ProductMap guide={chapter.productGuide} />
         {lesson.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
         {lesson.example && (
           <aside className="example-block">
@@ -81,4 +83,3 @@ export function LessonPanel({
     </section>
   );
 }
-

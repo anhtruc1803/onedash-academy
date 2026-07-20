@@ -25,12 +25,20 @@ export type PracticeDefinition = {
   success: string;
 };
 
+export type ProductScreenGuide = {
+  screen: string;
+  entryPath: string;
+  landmarks: string[];
+  operatorMove: string;
+};
+
 export type Chapter = {
   id: string;
   number: number;
   shortTitle: string;
   title: string;
   description: string;
+  productGuide: ProductScreenGuide;
   objectives: string[];
   lessons: Lesson[];
   scenario: string;
@@ -52,4 +60,3 @@ export type CourseProgress = {
   addedServers: string[];
   updatedAt: string;
 };
-

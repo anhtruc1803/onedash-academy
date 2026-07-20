@@ -1,6 +1,6 @@
-/* Hallmark · pre-emit critique: P5 H5 E4 S5 R5 V5
+/* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V4
  * macrostructure: Workbench · tone: technical/utilitarian · anchor hue: forest-green
- * theme: studied-DNA (source: attached reference) · vibe: "blueprint technical, forest green, ivory paper"
+ * theme: studied-DNA (source: 6 product UI images) · vibe: "blueprint technical, forest green, ivory paper"
  * paper: oklch(96% 0.018 128) · accent: oklch(72% 0.185 143)
  * display: Bricolage Grotesque · body: IBM Plex Sans · axes: light / geometric-sans / chromatic-green
  * enrichment: E4 interactive dashboard · nav: N3 side-rail · footer: Ft4 dense colophon
@@ -351,6 +351,17 @@ select:active:not(:disabled) { background-color: var(--color-paper-3); }
 .server-dashboard__head h2 { margin-block-start: var(--space-xs); font-size: var(--text-xl); }
 .server-dashboard__head > div > span { color: var(--color-light-muted); }
 
+.dashboard-controls { display: grid; gap: var(--space-sm); margin-block-start: var(--space-lg); }
+.dashboard-tabs { display: flex; gap: var(--space-2xs); overflow-x: auto; }
+.dashboard-tabs button,
+.metric-window button { min-height: 2.75rem; padding-inline: var(--space-md); background-color: var(--color-dark-2); color: var(--color-light-muted); border: var(--rule-hair) solid var(--color-dark-3); cursor: pointer; white-space: nowrap; }
+.dashboard-tabs button[data-active],
+.metric-window button[data-active] { background-color: var(--color-accent); color: var(--color-accent-ink); border-color: var(--color-accent); }
+.dashboard-search input { inline-size: 100%; min-height: 2.75rem; padding-inline: var(--space-md); background-color: var(--color-dark-2); color: var(--color-light); border: var(--rule-hair) solid var(--color-dark-3); border-radius: var(--radius-sm); outline: var(--rule-bold) solid var(--color-transparent); }
+.dashboard-search input::placeholder { color: var(--color-light-muted); }
+.dashboard-search input:focus-visible { outline-color: var(--color-focus); outline-offset: var(--space-3xs); }
+.dashboard-view-note { max-width: 68ch; margin-block-start: var(--space-sm); color: var(--color-light-muted); }
+
 .sync-indicator {
   display: flex;
   gap: var(--space-xs);
@@ -401,12 +412,15 @@ select:active:not(:disabled) { background-color: var(--color-paper-3); }
 .status-label { display: flex; gap: var(--space-xs); align-items: center; flex-wrap: wrap; }
 .status-label::before { flex-basis: 100%; }
 .status-label b { display: grid; place-items: center; inline-size: 1.5rem; block-size: 1.5rem; background-color: var(--color-accent); color: var(--color-accent-ink); border-radius: 50%; }
+.status-label small { flex-basis: 100%; color: var(--color-light-muted); font-family: var(--font-mono); font-size: var(--text-xs); }
 .server-table__row[data-state="cảnh báo"] .status-label b { background-color: var(--color-warning); color: var(--color-warning-ink); }
 .server-table__row[data-state="offline"] .status-label b { background-color: var(--color-error); color: var(--color-light); }
 .meter { position: relative; display: grid; min-width: 0; block-size: 1.6rem; background-color: var(--color-dark-3); overflow: clip; }
 .meter__fill { position: absolute; inset: 0; background-color: var(--color-accent); transform-origin: left; }
 .meter__value { position: relative; z-index: var(--z-raised); padding-inline: var(--space-xs); color: var(--color-light); font-family: var(--font-mono); font-size: var(--text-xs); line-height: 1.6rem; font-variant-numeric: tabular-nums; }
 .uptime { font-family: var(--font-mono); font-size: var(--text-sm); }
+.monitoring-label { color: var(--color-light-muted); font-size: var(--text-sm); }
+.dashboard-empty { padding: var(--space-xl); color: var(--color-light-muted); text-align: center; }
 
 .learning-panel { display: grid; gap: var(--space-lg); }
 
@@ -445,6 +459,17 @@ select:active:not(:disabled) { background-color: var(--color-paper-3); }
 .lesson-sheet h2 { max-width: 20ch; margin-block-start: var(--space-xl); font-size: var(--text-2xl); }
 .lesson-sheet__summary { margin-block: var(--space-md) var(--space-xl); color: var(--color-ink-2); font-size: var(--text-md); font-weight: 700; }
 .lesson-sheet > p:not(.lesson-sheet__summary):not(.unlock-message) { max-width: 68ch; margin-block-start: var(--space-md); }
+
+.product-map { display: grid; gap: var(--space-lg); margin-block: 0 var(--space-xl); padding: var(--space-lg); background-color: var(--color-dark); color: var(--color-light); border: var(--rule-hair) solid var(--color-dark-3); }
+.product-map__head { display: grid; gap: var(--space-xs); }
+.product-map__head > span { color: var(--color-accent); font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.06em; }
+.product-map__head h3 { font-size: var(--text-lg); }
+.product-map__head code { max-width: 68ch; color: var(--color-light-muted); font-family: var(--font-mono); overflow-wrap: anywhere; }
+.product-map__landmarks { display: grid; gap: var(--space-xs); list-style: none; }
+.product-map__landmarks li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-sm); padding-block: var(--space-xs); border-block-start: var(--rule-hair) solid var(--color-dark-3); }
+.product-map__landmarks b { color: var(--color-accent); font-family: var(--font-mono); }
+.product-map > p { color: var(--color-light-muted); }
+.product-map > p strong { color: var(--color-light); }
 
 .example-block,
 .note-block { margin-block-start: var(--space-xl); padding: var(--space-lg); border-block: var(--rule-hair) solid var(--color-rule); }
@@ -539,6 +564,12 @@ select { inline-size: 100%; min-height: 2.75rem; padding: var(--space-sm); backg
 .connection-review dd { margin-block-start: var(--space-xs); font-weight: 700; }
 
 .incident-stack { display: grid; gap: var(--space-sm); }
+.metric-window { display: flex; gap: var(--space-2xs); overflow-x: auto; margin-block-end: var(--space-sm); }
+.metric-readout { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-block-end: var(--space-lg); background-color: var(--color-paper); border: var(--rule-hair) solid var(--color-rule); }
+.metric-readout div { min-width: 0; padding: var(--space-md); border-inline-end: var(--rule-hair) solid var(--color-rule); }
+.metric-readout div:last-child { border-inline-end: 0; }
+.metric-readout dt { color: var(--color-muted); font-family: var(--font-mono); font-size: var(--text-xs); }
+.metric-readout dd { margin-block-start: var(--space-xs); font-weight: 700; overflow-wrap: anywhere; }
 .incident { padding: var(--space-lg); background-color: var(--color-paper); border-block: var(--rule-hair) solid var(--color-rule); }
 .incident > span { color: var(--color-muted); font-family: var(--font-mono); font-size: var(--text-xs); text-transform: uppercase; }
 .incident h3 { margin-block-start: var(--space-sm); font-size: var(--text-lg); }
@@ -609,6 +640,7 @@ select { inline-size: 100%; min-height: 2.75rem; padding: var(--space-sm); backg
 @keyframes toast-in { from { opacity: 0; transform: translateY(var(--space-xs)); } to { opacity: 1; transform: none; } }
 
 @media (hover: hover) and (pointer: fine) {
+  .dashboard-search input:hover { border-color: var(--color-light-muted); }
   .button:hover:not(:disabled) { background-color: var(--color-dark-2); transform: translateY(-1px); }
   .button--quiet:hover:not(:disabled) { background-color: var(--color-paper-2); color: var(--color-ink); }
   .button--danger:hover:not(:disabled) { background-color: var(--color-error); color: var(--color-light); }
@@ -630,6 +662,7 @@ select { inline-size: 100%; min-height: 2.75rem; padding: var(--space-sm); backg
   .chapter-progress-map button { grid-template-columns: 1fr; align-content: space-between; min-height: 8rem; }
   .server-dashboard { padding: var(--space-xl); border-radius: var(--radius-lg); }
   .server-dashboard__head { grid-template-columns: minmax(0, 1fr) auto; align-items: end; }
+  .dashboard-controls { grid-template-columns: minmax(0, 1fr) minmax(14rem, 0.55fr); align-items: center; }
   .dashboard-summary { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .dashboard-summary div:nth-child(2n) { border-inline-end: var(--rule-hair) solid var(--color-dark-3); }
   .dashboard-summary div:last-child { border-inline-end: 0; }
@@ -659,7 +692,7 @@ select { inline-size: 100%; min-height: 2.75rem; padding: var(--space-sm); backg
   .academy-main { width: auto; max-width: 92rem; margin-inline-start: 20rem; margin-inline-end: auto; padding-block-start: calc(4.5rem + var(--space-2xl)); }
   .server-table { gap: 0; border: var(--rule-hair) solid var(--color-dark-3); }
   .server-table__row,
-  .server-table__row:not(.server-table__header) { display: grid; grid-template-columns: minmax(12rem, 1.6fr) minmax(7rem, 0.8fr) repeat(3, minmax(5rem, 0.8fr)) minmax(6rem, 0.7fr); gap: var(--space-md); align-items: center; padding: var(--space-md); background-color: var(--color-transparent); border: 0; border-block-end: var(--rule-hair) solid var(--color-dark-3); border-radius: 0; }
+  .server-table__row:not(.server-table__header) { display: grid; grid-template-columns: minmax(9.5rem, 1.4fr) minmax(6rem, 0.8fr) repeat(3, minmax(3.75rem, 0.7fr)) minmax(4rem, 0.6fr) minmax(7rem, 1fr); gap: var(--space-sm); align-items: center; padding: var(--space-md); background-color: var(--color-transparent); border: 0; border-block-end: var(--rule-hair) solid var(--color-dark-3); border-radius: 0; }
   .server-table__row:last-child { border-block-end: 0; }
   .server-table__header { display: grid; color: var(--color-light-muted); font-family: var(--font-mono); font-size: var(--text-xs); }
   .server-table__row > span::before { display: none; }
@@ -669,7 +702,8 @@ select { inline-size: 100%; min-height: 2.75rem; padding: var(--space-sm); backg
   .lesson-index__item { grid-template-columns: auto minmax(0, 1fr) auto; min-width: 0; }
   .chapter-reference { position: sticky; inset-block-start: calc(4.5rem + var(--space-lg)); }
   .connect-practice { grid-template-columns: minmax(18rem, 0.75fr) minmax(0, 1.25fr); align-items: start; }
-  .incident-practice { grid-template-columns: minmax(0, 1.3fr) minmax(18rem, 0.7fr); align-items: start; }
+  .incident-practice { grid-template-columns: minmax(0, 1fr); align-items: start; }
+  .incident-stack { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 @media (min-width: 90rem) {

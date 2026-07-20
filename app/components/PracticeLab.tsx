@@ -11,13 +11,19 @@ type PracticeLabProps = {
   onComplete: () => void;
 };
 
-const dashboardAreas = ["Máy chủ", "Sức khỏe", "Dịch vụ", "Tài nguyên"];
+const dashboardAreas = ["Tổng quan", "Hiệu năng", "Bảo mật", "Nhật ký truy cập"];
 const securityChoices = [
   { id: "viewer", label: "Cấp vai trò quan sát cho người chỉ cần xem", correct: true },
   { id: "root", label: "Dùng chung một tài khoản root cho cả đội", correct: false },
   { id: "keys", label: "Quản lý SSH key tập trung và thu hồi key cũ", correct: true },
-  { id: "audit", label: "Rà soát audit log cuối ca", correct: true },
+  { id: "audit", label: "Rà soát Audit và Nhật ký Terminal cuối ca", correct: true },
 ];
+
+const metricProfiles = {
+  "Live 30s": { cpu: "42% · dao động ngắn", ram: "68% · ổn định", disk: "54% · không đổi" },
+  "1 giờ": { cpu: "38–71% · có 2 spike", ram: "66–72% · tăng nhẹ", disk: "54% · không đổi" },
+  "1 ngày": { cpu: "22–76% · theo nhịp tải", ram: "61–74% · chưa có dốc bất thường", disk: "52–54% · tăng 2%" },
+};
 
 export function PracticeLab({
   chapter,
@@ -31,6 +37,8 @@ export function PracticeLab({
   const [serverName, setServerName] = useState("api-service-01");
   const [serverOs, setServerOs] = useState("Linux");
   const [serverEnv, setServerEnv] = useState("Prod");
+  const [connectionMode, setConnectionMode] = useState("Agent Terminal");
+  const [metricWindow, setMetricWindow] = useState<keyof typeof metricProfiles>("Live 30s");
   const [incidentHandled, setIncidentHandled] = useState(false);
   const [securitySelected, setSecuritySelected] = useState<string[]>([]);
   const [automationStep, setAutomationStep] = useState<"idle" | "failed" | "success">("idle");
@@ -84,11 +92,12 @@ export function PracticeLab({
             <label>Tên máy chủ<select value={serverName} onChange={(event) => setServerName(event.target.value)}><option>api-service-01</option><option>web-prod-02</option><option>worker-dev-01</option></select></label>
             <label>Hệ điều hành<select value={serverOs} onChange={(event) => setServerOs(event.target.value)}><option>Linux</option><option>Windows</option></select></label>
             <label>Môi trường<select value={serverEnv} onChange={(event) => setServerEnv(event.target.value)}><option>Prod</option><option>Staging</option><option>Dev</option></select></label>
+            <label>Lối kết nối mô phỏng<select value={connectionMode} onChange={(event) => setConnectionMode(event.target.value)}><option>Agent Terminal</option><option>SSH Terminal</option></select></label>
             <dl className="connection-review">
               <div><dt>Định danh</dt><dd>{serverName}</dd></div>
               <div><dt>Nền tảng</dt><dd>{serverOs}</dd></div>
               <div><dt>Nhóm</dt><dd>{serverEnv}</dd></div>
-              <div><dt>Kết nối</dt><dd>Mô phỏng cục bộ</dd></div>
+              <div><dt>Kết nối</dt><dd>{connectionMode} · cục bộ</dd></div>
             </dl>
             <button className="button" type="submit" disabled={alreadyAdded}>{alreadyAdded ? "Đã thêm vào dashboard" : "Thêm server giả lập"}</button>
           </form>
@@ -98,9 +107,22 @@ export function PracticeLab({
     }
 
     if (chapter.id === "giam-sat") {
+      const metrics = metricProfiles[metricWindow];
       return (
         <div className="incident-practice">
-          <ServerDashboard addedServers={addedServers} />
+          <div>
+            <div className="metric-window" role="group" aria-label="Cửa sổ giám sát giả lập">
+              {(Object.keys(metricProfiles) as Array<keyof typeof metricProfiles>).map((windowLabel) => (
+                <button type="button" key={windowLabel} data-active={metricWindow === windowLabel || undefined} onClick={() => setMetricWindow(windowLabel)}>{windowLabel}</button>
+              ))}
+            </div>
+            <dl className="metric-readout" aria-live="polite">
+              <div><dt>CPU</dt><dd>{metrics.cpu}</dd></div>
+              <div><dt>RAM</dt><dd>{metrics.ram}</dd></div>
+              <div><dt>Disk</dt><dd>{metrics.disk}</dd></div>
+            </dl>
+            <ServerDashboard addedServers={addedServers} />
+          </div>
           <div className="incident-stack" aria-label="Trung tâm cảnh báo giả lập">
             <article className="incident incident--critical">
               <span>Mức 1 · Đang diễn ra</span>
@@ -168,4 +190,3 @@ export function PracticeLab({
     </section>
   );
 }
-
