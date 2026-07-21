@@ -2,6 +2,15 @@
   {
     "date": "2026-07-20",
     "macrostructure": "Workbench",
+    "theme": "studied-DNA (source: user-attached academy reference)",
+    "theme_axes": "light / geometric-sans / chromatic-green",
+    "vibe": "measured blueprint frame, mission rail, forest dashboard",
+    "enrichment": "E4 interactive dashboard",
+    "brief": "OneDash Academy · blueprint interface refinement"
+  },
+  {
+    "date": "2026-07-20",
+    "macrostructure": "Workbench",
     "theme": "studied-DNA (source: 6 product UI images)",
     "theme_axes": "light / geometric-sans / chromatic-green",
     "vibe": "blueprint academy with real product landmarks",

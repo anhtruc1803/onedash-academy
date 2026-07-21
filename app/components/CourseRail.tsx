@@ -19,7 +19,8 @@ export function CourseRail({
     <aside className="course-rail" aria-label="Mục lục khóa học">
       <div className="course-rail__intro">
         <span className="course-rail__label">Lộ trình / 05 chương</span>
-        <strong>Học trước.<br />Làm sau.</strong>
+        <strong className="course-rail__wordmark"><span>OneDash</span><span>Academy</span></strong>
+        <p>Học OneDash qua năm nhiệm vụ.</p>
       </div>
       <ol className="course-rail__list">
         {chapters.map((chapter, index) => {
@@ -55,4 +56,3 @@ export function CourseRail({
     </aside>
   );
 }
-

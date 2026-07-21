@@ -28,8 +28,8 @@ export function ProgressHeader({
         <div><dt>Nhiệm vụ</dt><dd>{completedTasks}/5</dd></div>
         <div><dt>Điểm</dt><dd>{score}%</dd></div>
       </dl>
-      <button className="button button--quiet topbar__tools" type="button" onClick={onOpenTools}>
-        Dữ liệu học
+      <button className="button button--quiet topbar__tools" type="button" aria-label="Quản lý dữ liệu học" onClick={onOpenTools}>
+        Dữ liệu
       </button>
       <div className="topbar__progress" aria-label={`Tổng tiến độ ${totalProgress}%`}>
         <span style={{ transform: `scaleX(${totalProgress / 100})` }} />
@@ -37,4 +37,3 @@ export function ProgressHeader({
     </header>
   );
 }
-
