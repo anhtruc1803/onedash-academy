@@ -124,21 +124,13 @@ export function AcademyApp() {
               >
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 <strong>{item.label}</strong>
-                <small>{item.state === "complete" ? "Hoàn thành" : item.state === "locked" ? "Đang khóa" : item.state === "ready" ? "Đã mở" : "Đang học"}</small>
+                <small>{item.state === "complete" ? "✓ Hoàn thành" : item.state === "locked" ? "Đang khóa" : item.state === "ready" ? "Đã mở" : "Đang học"}</small>
               </button>
             ))}
           </div>
         </section>
 
         {activeChapter.number === 1 && stage === "theory" && <ServerDashboard addedServers={progress.addedServers} />}
-
-        <nav className="stage-tabs" aria-label="Phần học">
-          {stageStatus.map((item) => (
-            <button key={item.id} type="button" data-active={stage === item.id || undefined} disabled={item.state === "locked"} onClick={() => setStage(item.id)}>
-              <span>{item.state === "complete" ? "✓" : item.state === "locked" ? "—" : "→"}</span>{item.label}
-            </button>
-          ))}
-        </nav>
 
         {stage === "theory" && (
           <LessonPanel

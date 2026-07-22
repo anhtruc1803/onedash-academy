@@ -310,7 +310,11 @@ select:active:not(:disabled) { background-color: var(--color-paper-3); }
 
 .chapter-progress-map button[data-active] { border-color: var(--color-ink); }
 
-.chapter-progress-map button[data-state="complete"] { background-color: var(--color-success-soft); }
+.chapter-progress-map button[data-state="complete"] {
+  background-color: var(--color-success-soft);
+  color: var(--color-ink);
+  border-color: var(--color-accent);
+}
 
 .chapter-progress-map button > span,
 .chapter-progress-map button small {
@@ -687,6 +691,7 @@ select { inline-size: 100%; min-height: 2.75rem; padding: var(--space-sm); backg
   .lesson-index__item:hover,
   .chapter-progress-map button:hover:not(:disabled),
   .stage-tabs button:hover:not(:disabled) { background-color: var(--color-paper-3); color: var(--color-ink); }
+  .chapter-progress-map button[data-state="complete"]:hover { background-color: var(--color-success-soft); }
   .chapter-link[data-active]:hover,
   .lesson-index__item[data-active]:hover,
   .stage-tabs button[data-active]:hover { background-color: var(--color-dark-2); color: var(--color-light); }
