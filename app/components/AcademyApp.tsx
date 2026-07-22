@@ -151,6 +151,7 @@ export function AcademyApp() {
               const lastUnread = activeChapter.lessons.filter((lesson) => !progress.readLessonIds.includes(lesson.id)).length === 1;
               if (lastUnread) setToast("Đã mở khóa phần kiểm tra kiến thức.");
             }}
+            onStartQuiz={() => setStage("quiz")}
           />
         )}
 

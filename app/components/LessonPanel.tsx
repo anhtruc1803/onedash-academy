@@ -6,6 +6,7 @@ type LessonPanelProps = {
   readLessonIds: string[];
   onLessonIndexChange: (index: number) => void;
   onMarkRead: (lessonId: string) => void;
+  onStartQuiz: () => void;
 };
 
 export function LessonPanel({
@@ -14,10 +15,12 @@ export function LessonPanel({
   readLessonIds,
   onLessonIndexChange,
   onMarkRead,
+  onStartQuiz,
 }: LessonPanelProps) {
   const lesson = chapter.lessons[lessonIndex];
   const isRead = readLessonIds.includes(lesson.id);
   const allRead = chapter.lessons.every((item) => readLessonIds.includes(item.id));
+  const isLastLesson = lessonIndex === chapter.lessons.length - 1;
 
   return (
     <section className="learning-panel" aria-labelledby="lesson-title">
@@ -59,7 +62,11 @@ export function LessonPanel({
         <div className="lesson-actions">
           <button className="button button--quiet" type="button" disabled={lessonIndex === 0} onClick={() => onLessonIndexChange(lessonIndex - 1)}>Bài trước</button>
           <button className="button" type="button" disabled={isRead} onClick={() => onMarkRead(lesson.id)}>{isRead ? "Đã đọc" : "Đánh dấu đã đọc"}</button>
-          <button className="button button--quiet" type="button" disabled={lessonIndex === chapter.lessons.length - 1} onClick={() => onLessonIndexChange(lessonIndex + 1)}>Bài sau</button>
+          {isLastLesson && allRead ? (
+            <button className="button" type="button" onClick={onStartQuiz}>Kiểm tra →</button>
+          ) : (
+            <button className="button button--quiet" type="button" disabled={isLastLesson} onClick={() => onLessonIndexChange(lessonIndex + 1)}>Bài sau</button>
+          )}
         </div>
         {allRead && <p className="unlock-message" role="status">Lý thuyết đã hoàn thành. Phần kiểm tra đã mở khóa.</p>}
       </article>
